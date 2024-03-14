@@ -146,6 +146,40 @@ class CategoryAdmin(admin.ModelAdmin):
         # page_obj = paginator.get_page(page_number)
         # page_range = paginator.get_elided_page_range(page_obj.number)
         children_categories = Category.objects.get(id=object_id).category_parent.all()
+        selected_category = Category.objects.get(id=object_id)
+        def get_descendants(object):
+            descendants = {}
+            objects = object._meta.model.objects.raw("""
+                WITH RECURSIVE category_tree AS (
+                    SELECT id, name, parent_id
+                    FROM {db_table}
+                    WHERE id = {object_id}
+                  UNION
+                    SELECT c.id, c.name, c.parent_id
+                    FROM {db_table} c
+                    JOIN category_tree ct ON c.parent_id = ct.id
+                )
+                SELECT id, name, parent_id
+                FROM category_tree
+                ORDER BY id;
+            """.format(
+                db_table=object._meta.db_table,
+                object_id=object.id
+            ))
+            # for obj in objects:
+            #     if obj.parent_id not in descendants:
+            #         descendants[obj.parent_id] = []
+            #     descendants[obj.parent_id].append(obj)
+            #
+            #     # Присвоение каждому объекту список его дочерних объектов
+            # for obj in objects:
+            #     obj.children = descendants.get(obj.id, [])
+
+            return objects
+
+        print(get_descendants(selected_category))
+        # Получаем всех потомков выбранной категории
+        # children_categories = get_descendants(selected_category)
 
         print(self.opts.model_name)
         context = {
@@ -155,10 +189,12 @@ class CategoryAdmin(admin.ModelAdmin):
             # "page_range": page_range,
             # "page_var": PAGE_VAR,
             # "pagination_required": paginator.count > 100,
-            "children_categories": children_categories,
+            "children_categories": get_descendants(selected_category),
             "module_name": str(capfirst(self.opts.verbose_name_plural)),
             "object": obj,
             "opts": self.opts,
+            'selected_category': selected_category,
+            'descendants': children_categories,
             # "preserved_filters": self.get_preserved_filters(request),
             **(extra_context or {}),
         }
@@ -166,7 +202,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
         return TemplateResponse(
             request,
-            'admin/test_app/preview.html',
+            'admin/test_app/category_tree.html',
             context,
         )
 

@@ -1,3 +1,24 @@
+html[data-theme="light"] {
+    --border-tree-color: #000;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+      --border-tree-color: #000;
+
+    }
+  }
+
+html[data-theme="dark"] {
+    --border-tree-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --border-tree-color: #fff;
+
+    }
+  }
+
 .change-tree {
     display: flex;
     justify-content: center;
@@ -31,7 +52,7 @@
 }
 
 .tf-tree li li:before {
-    border-top: .0625em solid #000;
+    border-top: .0625em solid var(--border-tree-color);
     content: "";
     display: block;
     height: .0625em;
@@ -62,7 +83,7 @@
 }
 
 .tf-tree .tf-nc,.tf-tree .tf-node-content {
-    border: .0625em solid #000;
+    border: .0625em solid var(--border-tree-color);
     display: inline-block;
     padding: .5em 1em;
     position: relative
@@ -73,7 +94,7 @@
 }
 
 .tf-tree .tf-nc:after,.tf-tree .tf-nc:before,.tf-tree .tf-node-content:after,.tf-tree .tf-node-content:before {
-    border-left: .0625em solid #000;
+    border-left: .0625em solid var(--border-tree-color);
     content: "";
     display: block;
     height: 1em;

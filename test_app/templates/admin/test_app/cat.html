@@ -1,0 +1,15 @@
+{% load i18n admin_list admin_urls %}
+{% load verbose_names %}
+
+<li>
+    <span class="tf-nc">
+        <a href="{% url opts|admin_urlname:'preview' selected_category.id|admin_urlquote %}">{{selected_category}}</a>
+    </span>
+    {% if descendants %}
+        <ul>
+            {% for descendant in descendants %}
+                {% include 'admin/test_app/cat.html' with selected_category=descendant descendants=descendant.category_parent.all %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
