@@ -1,10 +1,11 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_list admin_urls %}
 {% load static %}
+{% load verbose_names %}
 
 
 {% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'test_app/tree_style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -32,7 +33,7 @@
             <li>
                 {% if object.parent_id %}
                     <span class="tf-nc">
-                        <a href="{% url opts|admin_urlname:'preview' object.parent_id|admin_urlquote %}">Go to parent tree</a>
+                        <a href="{% url opts|admin_urlname:'tree' object.parent_id|admin_urlquote %}">Go to parent tree</a>
                     </span>
                 {% else %}
                     <span class="tf-nc">
@@ -40,21 +41,7 @@
                     </span>
                 {% endif %}
                 <ul>
-                    <li>
-                        <span class="tf-nc">
-                            <a href="{% url opts|admin_urlname:'preview' object.id|admin_urlquote %}">{{object}}</a>
-                        </span>
-                        <ul>
-                            {% for children_object in children_categories %}
-                            <li>
-                                <span class="tf-nc">
-                                    <a href="{% url opts|admin_urlname:'preview' children_object.id|admin_urlquote %}">{{children_object}}</a>
-                                </span>
-                            </li>
-                            {% endfor %}
-
-                        </ul>
-                    </li>
+                    {% include 'admin/django_admin_tree/cat.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
                 </ul>
             </li>
         </ul>

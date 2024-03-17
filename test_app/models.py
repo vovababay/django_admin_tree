@@ -1,7 +1,9 @@
 from django.db import models
 
+from django_admin_tree.models import TreeParentModelMixin
 
-class Category(models.Model):
+
+class Category(TreeParentModelMixin, models.Model):
     name = models.CharField(max_length=255, verbose_name="Название")
     parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,  blank=True, related_name='category_parent',
                                verbose_name="Родительская категория")

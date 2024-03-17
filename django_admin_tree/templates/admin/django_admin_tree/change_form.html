@@ -4,10 +4,7 @@
 {% block object-tools-items %}
   {% if object_id %}
   <li>
-    <a href="{% url opts|admin_urlname:'preview' object_id|admin_urlquote %}" >
-
-    Tree
-    </a>
+    <a href="{% url opts|admin_urlname:'tree' object_id|admin_urlquote %}" >Tree</a>
   </li>
   {% endif %}
   {{ block.super }}

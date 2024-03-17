@@ -1,11 +1,10 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_list admin_urls %}
 {% load static %}
-{% load verbose_names %}
 
 
 {% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'test_app/tree_style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -29,16 +28,11 @@
     </ul>
   <div id="change-tree" class="change-tree">
     <div class="tf-tree example">
-        {% for i in children_categories %}
-        {% if children_categories|filter_objects_by_parent:i.pk %}
-        <p>{{i}}: {{children_categories|filter_objects_by_parent:i.pk}} </p>
-        {% endif %}
-        {% endfor %}
         <ul>
             <li>
                 {% if object.parent_id %}
                     <span class="tf-nc">
-                        <a href="{% url opts|admin_urlname:'preview' object.parent_id|admin_urlquote %}">Go to parent tree</a>
+                        <a href="{% url opts|admin_urlname:'tree' object.parent_id|admin_urlquote %}">Go to parent tree</a>
                     </span>
                 {% else %}
                     <span class="tf-nc">
@@ -46,7 +40,21 @@
                     </span>
                 {% endif %}
                 <ul>
-                    {% include 'admin/test_app/cat.html' with selected_category=object descendants=object.category_parent.all %}
+                    <li>
+                        <span class="tf-nc">
+                            <a href="{% url opts|admin_urlname:'tree' object.id|admin_urlquote %}">{{object}}</a>
+                        </span>
+                        <ul>
+                            {% for children_object in descendants %}
+                            <li>
+                                <span class="tf-nc">
+                                    <a href="{% url opts|admin_urlname:'tree' children_object.id|admin_urlquote %}">{{children_object}}</a>
+                                </span>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>
