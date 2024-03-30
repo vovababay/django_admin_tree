@@ -8,8 +8,8 @@ from django_admin_tree.admin import TreeParentAdminMixin
 
 @admin.register(Category)
 class CategoryAdmin(TreeParentAdminMixin, admin.ModelAdmin):
-    list_display = ('name', 'parent') #, 'tree_link')
-    max_tree_depth = 30
+    list_display = ('name', 'parent')
+    max_tree_depth = 3
 
 
 
