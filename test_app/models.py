@@ -12,6 +12,9 @@ class Category(TreeParentModelMixin, models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
+    class TreeMeta:
+        parent_field_name = 'parent'
+
     def __str__(self):
         return f'{self.name}'
 
