@@ -1,12 +1,13 @@
 import os
 
 from setuptools import setup, find_packages
+from django_admin_tree import __version__ as version
 
 setup(
     name = 'django_admin_tree',
-    version = '0.0.1',
+    version = version,
     description = 'Test description',
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
+    long_description='Test description',
     author = 'Vladimir Babaev.',
     author_email = 'vladimir.babaev.12@gmail.com',
     url = 'https://github.com/vovababay/django-admin-tree',
