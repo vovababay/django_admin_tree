@@ -26,11 +26,9 @@ jobs:
         cd tests
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: djhgahgda
-      run: |
-        cd tests
     - name: Run Tests
       run: |
         cd tests
-        ./runtests.sh
+        ./entrypoint.sh test
+        ./entrypoint.sh test_coverage_collect
 
