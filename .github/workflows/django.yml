@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -16,7 +16,7 @@ jobs:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12']
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@main
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -27,4 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
+        cd tests
+        ls
         python manage.py test
