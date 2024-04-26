@@ -1,5 +1,5 @@
 [run]
-include = */mptt/*
+include = */django_admin_tree/*
 
 [report]
 exclude_lines =
