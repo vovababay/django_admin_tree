@@ -76,3 +76,4 @@ class TreeParentAdminMixin:
     @property
     def urls(self):
         return self.get_urls()
+
