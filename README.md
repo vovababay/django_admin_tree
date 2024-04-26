@@ -1,5 +1,7 @@
 # django-admin-tree
 
+<!-- README.md -->
++ [![cov](https://vovababay.github.io/django_admin_tree/badges/coverage.svg)](https://github.com/vovababay/django_admin_tree/actions)
 
 ```python
 INSTALLED_APPS = [
