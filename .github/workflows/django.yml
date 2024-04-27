@@ -30,5 +30,4 @@ jobs:
       run: |
         cd tests
         ./entrypoint.sh test
-        ./entrypoint.sh test_coverage_collect
 

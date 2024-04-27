@@ -3,9 +3,13 @@
 {% load static %}
 {% load verbose_names %}
 
+<head>
+    <script src="{% static 'django_admin_tree/script.js' %}"></script>
+</head>
 
-{% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -41,7 +45,7 @@
                     </span>
                 {% endif %}
                 <ul>
-                    {% include 'admin/django_admin_tree/cat.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
+                    {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
                 </ul>
             </li>
         </ul>
