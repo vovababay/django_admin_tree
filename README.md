@@ -32,7 +32,7 @@ class Category(TreeParentModelMixin, models.Model):
 
 
 ### admin.py
-#### !!! You must specify the max_tree_depth value in admin class, otherwise the output will be infinite
+#### !!! You must specify the max_tree_depth value in admin class, otherwise the output will be all
 ```python
 from django.contrib import admin
 
