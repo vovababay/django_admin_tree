@@ -6,14 +6,14 @@
     <span class="tf-nc">
         <a href="{% url opts|admin_urlname:'tree' obj.id|admin_urlquote %}">{{obj}}</a>
         <br/>
-        <button onclick="test()">Click me!</button>
+        {{ path_to_create_child|get_add_parent_element:obj.id }}
 
-{#        <a id="lookup_id_{{ obj.id }}" class="related-lookup gfklookup" onclick="return gfklookupwidget_click();">dsds</a>#}
+{#        <a class="hhhhh" id="{{ obj.id }}" onclick="showRelatedObjectLookupPopup(this, event)">Click me!</a>#}
     </span>
     {% if descendants %}
         <ul>
             {% for descendant in descendants %}
-                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=all_descendants|filter_objects_by_parent:descendant.pk all_descendants=all_descendants%}
+                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=all_descendants|filter_objects_by_parent:descendant.pk all_descendants=all_descendants add_url=add_url%}
             {% endfor %}
         </ul>
     {% endif %}

@@ -1,11 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_list admin_urls %}
-{% load static %}
-{% load verbose_names %}
-
-<head>
-    <script src="{% static 'django_admin_tree/script.js' %}"></script>
-</head>
+{% load i18n admin_list admin_urls static verbose_names%}
 
 {% block extrastyle %}
     {{ block.super }}
@@ -25,6 +19,9 @@
 {% endblock %}
 
 {% block content %}
+{% block extrajs %}
+    <script src="{% static 'js/script.js' %}" defer></script>
+{% endblock %}
 <div id="content-main">
     <ul class="object-tools">
       <li>
@@ -53,3 +50,4 @@
   </div>
 </div>
 {% endblock %}
+

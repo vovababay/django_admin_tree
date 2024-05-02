@@ -34,6 +34,8 @@ class TreeParentModelMixin:
         return objects
 
     def is_cycled(self):
+        if not self.id:
+            return False
         descendants = [descendant.id for descendant in self.get_descendants()]
         parent_id = getattr(self, self.parent_field_db_name)
         if parent_id in descendants:
