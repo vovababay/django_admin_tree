@@ -46,7 +46,7 @@ class CategoryAdmin(TreeParentAdminMixin, admin.ModelAdmin):
     max_tree_depth = 3
 
 ```
-
+[Example](ONE_FK_README.md)
 
 ### set fixtures for test
 ```python
