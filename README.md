@@ -1,8 +1,5 @@
 # django-admin-tree
 
-<!-- README.md -->
-+ [![cov](https://vovababay.github.io/django_admin_tree/badges/coverage.svg)](https://github.com/vovababay/django_admin_tree/actions)
-
 ```python
 INSTALLED_APPS = [
     ...
@@ -35,7 +32,7 @@ class Category(TreeParentModelMixin, models.Model):
 
 
 ### admin.py
-#### !!! You must specify the max_tree_depth value in admin class, otherwise the output will be infinite
+#### !!! You must specify the max_tree_depth value in admin class, otherwise the output will be all
 ```python
 from django.contrib import admin
 
@@ -49,7 +46,7 @@ class CategoryAdmin(TreeParentAdminMixin, admin.ModelAdmin):
     max_tree_depth = 3
 
 ```
-
+[Example](ONE_FK_README.md)
 
 ### set fixtures for test
 ```python

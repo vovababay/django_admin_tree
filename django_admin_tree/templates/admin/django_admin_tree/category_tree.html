@@ -1,11 +1,9 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_list admin_urls %}
-{% load static %}
-{% load verbose_names %}
+{% load i18n admin_list admin_urls static verbose_names%}
 
-
-{% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -21,6 +19,9 @@
 {% endblock %}
 
 {% block content %}
+{% block extrajs %}
+    <script src="{% static 'js/script.js' %}" defer></script>
+{% endblock %}
 <div id="content-main">
     <ul class="object-tools">
       <li>
@@ -41,7 +42,7 @@
                     </span>
                 {% endif %}
                 <ul>
-                    {% include 'admin/django_admin_tree/cat.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
+                    {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
                 </ul>
             </li>
         </ul>
@@ -49,3 +50,4 @@
   </div>
 </div>
 {% endblock %}
+

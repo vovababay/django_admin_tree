@@ -1,19 +1,11 @@
 from functools import update_wrapper
 from django.contrib.admin.utils import unquote
 from django.core.exceptions import (
-    FieldDoesNotExist,
-    FieldError,
     PermissionDenied,
-    ValidationError,
 )
 from django.template.response import TemplateResponse
 from django.utils.text import capfirst
 from django.utils.translation import gettext as _
-
-
-def get_content_type_for_model(obj):
-    from django.contrib.contenttypes.models import ContentType
-    return ContentType.objects.get_for_model(obj, for_concrete_model=False)
 
 
 class TreeParentAdminMixin:
@@ -38,7 +30,16 @@ class TreeParentAdminMixin:
             *super().get_urls(),
         ]
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        print(form)
+        parent_id = request.GET.get("parent_id")
+        if parent_id and len(parent_id) > 0:
+            form.base_fields['parent'].initial = 10043
+        return form
+
     def tree_view(self, request, object_id, extra_context=None):
+
         model = self.model
         obj = self.get_object(request, unquote(object_id))
         if obj is None:
@@ -48,13 +49,6 @@ class TreeParentAdminMixin:
 
         if not self.has_view_or_change_permission(request, obj):
             raise PermissionDenied
-        # rows = obj.check_cycle()
-        # for i in rows:
-        #     print(i)
-        # print(rows.query)
-        # if rows:
-        #     descendants = obj.get_descendants(max_depth=1)
-        # else:
         descendants = obj.get_descendants(max_depth=self.max_tree_depth)
         context = {
             **self.admin_site.each_context(request),
@@ -62,7 +56,6 @@ class TreeParentAdminMixin:
             "module_name": str(capfirst(self.opts.verbose_name_plural)),
             "object": obj,
             "opts": self.opts,
-            'obj': obj,
             'descendants': descendants,
             **(extra_context or {}),
         }

@@ -18,3 +18,4 @@ def verbose_name_filter(obj, field_name):
 def filter_objects_by_parent(objects, parent_id):
     result = list(filter(lambda obj: (obj.parent_id == parent_id), objects))
     return result
+

@@ -1,5 +1,7 @@
 {% load i18n admin_list admin_urls %}
+{% load static %}
 {% load verbose_names %}
+
 
 <li>
     <span class="tf-nc">
@@ -8,8 +10,9 @@
     {% if descendants %}
         <ul>
             {% for descendant in descendants %}
-                {% include 'admin/django_admin_tree/cat.html' with obj=descendant descendants=all_descendants|filter_objects_by_parent:descendant.pk all_descendants=all_descendants%}
+                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=all_descendants|filter_objects_by_parent:descendant.pk all_descendants=all_descendants add_url=add_url%}
             {% endfor %}
         </ul>
     {% endif %}
 </li>
+

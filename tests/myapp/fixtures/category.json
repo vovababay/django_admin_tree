@@ -1,6 +1,6 @@
 [
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10004,
     "fields": {
       "name": "1",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10005,
     "fields": {
       "name": "0 - 1",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10006,
     "fields": {
       "name": "0 - 0 - 1",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10007,
     "fields": {
       "name": "0 - 0 - 0 - 1",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10008,
     "fields": {
       "name": "1 - 0 - 0 - 1",
@@ -40,7 +40,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10009,
     "fields": {
       "name": "2 - 0 - 0 - 1",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10010,
     "fields": {
       "name": "1 - 0 - 1",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10011,
     "fields": {
       "name": "0 - 1 - 0 - 1",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10012,
     "fields": {
       "name": "1 - 1 - 0 - 1",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10013,
     "fields": {
       "name": "2 - 1 - 0 - 1",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10014,
     "fields": {
       "name": "2 - 0 - 1",
@@ -88,7 +88,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10015,
     "fields": {
       "name": "0 - 2 - 0 - 1",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10016,
     "fields": {
       "name": "1 - 2 - 0 - 1",
@@ -104,7 +104,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10017,
     "fields": {
       "name": "2 - 2 - 0 - 1",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10018,
     "fields": {
       "name": "1 - 1",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10019,
     "fields": {
       "name": "0 - 1 - 1",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10020,
     "fields": {
       "name": "0 - 0 - 1 - 1",
@@ -136,7 +136,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10021,
     "fields": {
       "name": "1 - 0 - 1 - 1",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10022,
     "fields": {
       "name": "2 - 0 - 1 - 1",
@@ -152,7 +152,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10023,
     "fields": {
       "name": "1 - 1 - 1",
@@ -160,7 +160,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10024,
     "fields": {
       "name": "0 - 1 - 1 - 1",
@@ -168,7 +168,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10025,
     "fields": {
       "name": "1 - 1 - 1 - 1",
@@ -176,7 +176,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10026,
     "fields": {
       "name": "2 - 1 - 1 - 1",
@@ -184,7 +184,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10027,
     "fields": {
       "name": "2 - 1 - 1",
@@ -192,7 +192,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10028,
     "fields": {
       "name": "0 - 2 - 1 - 1",
@@ -200,7 +200,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10029,
     "fields": {
       "name": "1 - 2 - 1 - 1",
@@ -208,7 +208,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10030,
     "fields": {
       "name": "2 - 2 - 1 - 1",
@@ -216,7 +216,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10031,
     "fields": {
       "name": "2 - 1",
@@ -224,7 +224,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10032,
     "fields": {
       "name": "0 - 2 - 1",
@@ -232,7 +232,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10033,
     "fields": {
       "name": "0 - 0 - 2 - 1",
@@ -240,7 +240,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10034,
     "fields": {
       "name": "1 - 0 - 2 - 1",
@@ -248,7 +248,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10035,
     "fields": {
       "name": "2 - 0 - 2 - 1",
@@ -256,7 +256,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10036,
     "fields": {
       "name": "1 - 2 - 1",
@@ -264,7 +264,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10037,
     "fields": {
       "name": "0 - 1 - 2 - 1",
@@ -272,7 +272,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10038,
     "fields": {
       "name": "1 - 1 - 2 - 1",
@@ -280,7 +280,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10039,
     "fields": {
       "name": "2 - 1 - 2 - 1",
@@ -288,7 +288,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10040,
     "fields": {
       "name": "2 - 2 - 1",
@@ -296,7 +296,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10041,
     "fields": {
       "name": "0 - 2 - 2 - 1",
@@ -304,7 +304,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10042,
     "fields": {
       "name": "1 - 2 - 2 - 1",
@@ -312,7 +312,7 @@
     }
   },
   {
-    "model": "test_app.category",
+    "model": "myapp.category",
     "pk": 10043,
     "fields": {
       "name": "2 - 2 - 2 - 1",

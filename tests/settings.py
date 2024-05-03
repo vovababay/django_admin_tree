@@ -1,10 +1,28 @@
 import os
 
 
-DIRNAME = os.path.dirname(__file__)
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 DEBUG = True
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase"}}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "mydatabase.sqlite3"
+#     }
+# }
+# django_admin_tree
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "django_admin_tree",
+        "USER": "postgres",
+        "PASSWORD": "password",
+    }
+}
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 INSTALLED_APPS = (
@@ -21,11 +39,13 @@ INSTALLED_APPS = (
 STATIC_URL = "/static/"
 SECRET_KEY = "abc123"
 MIDDLEWARE = [
-    "django.middleware.common.CommonMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 TEMPLATES = [
@@ -45,4 +65,5 @@ TEMPLATES = [
 ]
 
 ROOT_URLCONF = "myapp.urls"
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
