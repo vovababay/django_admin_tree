@@ -8,21 +8,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 DEBUG = True
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": "mydatabase.sqlite3"
-#     }
-# }
-# django_admin_tree
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django_admin_tree",
-        "USER": "postgres",
-        "PASSWORD": "password",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase.sqlite3"
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "django_admin_tree",
+#         "USER": "postgres",
+#         "PASSWORD": "password",
+#     }
+# }
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 INSTALLED_APPS = (
