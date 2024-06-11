@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
 {% endblock %}
 
+{% block extrahead %}
+    <script type="text/javascript" src="{% static 'js/admin_tree.js' %}"></script>
+{% endblock %}
+
 {% block breadcrumbs %}
 
 
@@ -19,9 +23,6 @@
 {% endblock %}
 
 {% block content %}
-{% block extrajs %}
-    <script src="{% static 'js/script.js' %}" defer></script>
-{% endblock %}
 <div id="content-main">
     <ul class="object-tools">
       <li>

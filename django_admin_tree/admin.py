@@ -3,6 +3,7 @@ from django.contrib.admin.utils import unquote
 from django.core.exceptions import (
     PermissionDenied,
 )
+from django.http import HttpResponse
 from django.template.response import TemplateResponse
 from django.utils.text import capfirst
 from django.utils.translation import gettext as _
@@ -32,7 +33,6 @@ class TreeParentAdminMixin:
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
-        print(form)
         parent_id = request.GET.get("parent_id")
         if parent_id and len(parent_id) > 0:
             form.base_fields['parent'].initial = 10043
@@ -69,4 +69,17 @@ class TreeParentAdminMixin:
     @property
     def urls(self):
         return self.get_urls()
+
+
+    def get_form(self, request, obj=None, **kwargs):
+        parent_field = self.model._meta.model.TreeMeta.parent_field_name
+        form = super().get_form(request, obj, **kwargs)
+        if parent_field in request.GET:
+            form.base_fields[parent_field].initial = request.GET[parent_field]
+        return form
+
+    def response_add(self, request, obj, post_url_continue=None):
+        if "_popup" in request.GET:
+            return HttpResponse(f'<script type="text/javascript">window.close();</script>')
+        return super().response_add(request, obj, post_url_continue)
 

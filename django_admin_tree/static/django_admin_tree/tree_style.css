@@ -1,20 +1,23 @@
 html[data-theme="light"] {
     --border-tree-color: #000;
+    --background-button: #fff;
 }
 @media (prefers-color-scheme: light) {
     :root {
       --border-tree-color: #000;
-
+      --background-button: #fff;
     }
   }
 
 html[data-theme="dark"] {
     --border-tree-color: #fff;
+    --background-button: #000;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-      --border-tree-color: #fff;
+        --border-tree-color: #fff;
+        --background-button: #000;
 
     }
   }
@@ -84,9 +87,14 @@ html[data-theme="dark"] {
 
 .tf-tree .tf-nc,.tf-tree .tf-node-content {
     border: .0625em solid var(--border-tree-color);
-    display: inline-block;
+    width: 100px;
+    word-wrap: break-word;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
     padding: .5em 1em;
-    position: relative
+    position: relative;
+    align-items: center;
 }
 
 .tf-tree .tf-nc:before,.tf-tree .tf-node-content:before {
@@ -193,4 +201,16 @@ html[data-theme="dark"] {
     vertical-align: middle;
     background-repeat: no-repeat;
     background-size: 14px;
+}
+
+.create-record {
+    color: var(--border-tree-color);
+    background-color: var(--background-button);
+    text-align: center;
+    width: 40px;
+    border-radius: 5px;
+    border: solid 0.5px var(--border-tree-color)
+}
+.create-record:hover {
+    cursor: pointer;
 }

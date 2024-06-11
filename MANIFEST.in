@@ -1,5 +1,9 @@
 include README.rst
 include LICENSE
 recursive-include docs *.rst
-recursive-include treeadmin/templates *.html
-recursive-include treeadmin/static *
+recursive-include django_admin_tree/templates *.html
+recursive-include django_admin_tree/static *
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * empty

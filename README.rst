@@ -1,6 +1,10 @@
 django-admin-tree
-================
+=================
+
+https://github.com/vovababay/django_admin_tree
 
 
-.. code-block:: python
-    test docs
+Description
+-----------
+
+*Django Admin addon to navigate tree*
