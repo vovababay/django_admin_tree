@@ -19,8 +19,6 @@ setup(
     classifiers = [
         "Framework :: Django",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: BSD License",
-        "Operating System :: OS Independent",
-        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+        "License :: MIT License",
     ]
 )
