@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'django_admin_tree',
-    version = '0.0.1',
+    version = '0.0.2',
     description = 'Test description',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author = 'Vladimir Babaev.',
