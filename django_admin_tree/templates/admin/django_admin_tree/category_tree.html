@@ -26,7 +26,7 @@
 <div id="content-main">
     <ul class="object-tools">
       <li>
-        <a href="{% url opts|admin_urlname:'change' object.id|admin_urlquote %}">Move to object</a>
+        <a href="{% url opts|admin_urlname:'change' object.id|admin_urlquote %}">Редактирование</a>
       </li>
     </ul>
   <div id="change-tree" class="change-tree">
@@ -35,7 +35,7 @@
             <li>
                 {% if object.parent_id %}
                     <span class="tf-nc">
-                        <a href="{% url opts|admin_urlname:'tree' object.parent_id|admin_urlquote %}">Go to parent tree</a>
+                        <a href="{% url opts|admin_urlname:'tree' object.parent_id|admin_urlquote %}">Вверх</a>
                     </span>
                 {% else %}
                     <span class="tf-nc">
