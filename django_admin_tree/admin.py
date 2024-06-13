@@ -31,13 +31,6 @@ class TreeParentAdminMixin:
             *super().get_urls(),
         ]
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        parent_id = request.GET.get("parent_id")
-        if parent_id and len(parent_id) > 0:
-            form.base_fields['parent'].initial = 10043
-        return form
-
     def tree_view(self, request, object_id, extra_context=None):
 
         model = self.model
@@ -50,6 +43,8 @@ class TreeParentAdminMixin:
         if not self.has_view_or_change_permission(request, obj):
             raise PermissionDenied
         descendants = obj.get_descendants(max_depth=self.max_tree_depth)
+        add_parent_url = '/admin/{}/{}/add'.format(self.opts.app_label, self.opts.model_name)
+        print(add_parent_url)
         context = {
             **self.admin_site.each_context(request),
             "title": _("Tree object: %s") % obj,
@@ -57,6 +52,7 @@ class TreeParentAdminMixin:
             "object": obj,
             "opts": self.opts,
             'descendants': descendants,
+            'add_parent_url': add_parent_url,
             **(extra_context or {}),
         }
         request.current_app = self.admin_site.name
