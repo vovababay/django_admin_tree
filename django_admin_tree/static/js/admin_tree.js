@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 document.querySelectorAll('.create-record').forEach(function(button) {
     button.addEventListener('click', function() {
-        console.log(window.location)
         var parentId = this.getAttribute('data-id');
         var create_url = this.getAttribute('data-url-template')
         var prent_params = this.getAttribute('data-parent-field')
         var url = `${create_url}?${prent_params}=` + parentId;
-        console.log(url)
         // Откроем модальное окно
         showAddAnotherPopup(window, url);
     });

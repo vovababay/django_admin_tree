@@ -11,7 +11,7 @@ def read_file(fpath):
 
 setup(
     name = 'django_admin_tree',
-    version = '0.1.2',
+    version = '0.1.4',
     description = 'Test description',
     long_description=read_file('README.rst'),
     author = 'Vladimir Babaev.',
