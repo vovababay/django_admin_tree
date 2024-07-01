@@ -1,21 +1,34 @@
+from typing import Any, Iterable, Optional
+
 from django import template
 
 
 register = template.Library()
 
 
-@register.simple_tag
-def verbose_name_tag(obj, field_name):
-    return obj._meta.get_field(field_name).verbose_name
-
-
 @register.filter
-def verbose_name_filter(obj, field_name):
-    return obj._meta.get_field(field_name).verbose_name
-
-
-@register.filter
-def filter_objects_by_parent(objects, parent_id):
-    result = list(filter(lambda obj: (obj.parent_id == parent_id), objects))
+def filter_objects_by_parent(objects: Iterable, args):
+    parent_field, parent_id = args
+    result = list(filter(lambda obj: (get_parent_id(obj, parent_field) == parent_id), objects))
     return result
+
+
+@register.filter
+def getattribute(value: Any, arg: str) -> Optional[Any]:
+    if hasattr(value, str(arg)):
+        return getattr(value, arg)
+    return None
+
+
+@register.filter
+def get_parent_id(obj: Any, parent_field: str) -> Optional[int]:
+    field = getattribute(obj, parent_field)
+    if field:
+        return field.id
+    return None
+
+
+@register.filter
+def tuple_filter(value, arg):
+    return (value, arg)
 

@@ -11,7 +11,11 @@
     {% if descendants %}
         <ul>
             {% for descendant in descendants %}
-                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=all_descendants|filter_objects_by_parent:descendant.pk all_descendants=all_descendants add_url=add_url %}
+                {% with parent_field|tuple_filter:descendant.pk as filter_args %}
+                    {% with all_descendants|filter_objects_by_parent:filter_args as filtered_descendants %}
+                        {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=filtered_descendants all_descendants=all_descendants add_url=add_url %}
+                    {% endwith %}
+                {% endwith %}
             {% endfor %}
         </ul>
     {% endif %}

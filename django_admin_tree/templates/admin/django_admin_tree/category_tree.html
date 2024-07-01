@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_list admin_urls static verbose_names%}
+{% load i18n admin_list admin_urls static verbose_names %}
 
 {% block extrastyle %}
     {{ block.super }}
@@ -11,43 +11,46 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-
-
 <div class="breadcrumbs">
-    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
-    &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
-    &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a>
-    &rsaquo; <a href="{% url opts|admin_urlname:'change' object.pk|admin_urlquote %}">{{ object|truncatewords:"18" }}</a>
-    &rsaquo; {% translate 'Tree' %}
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    &rsaquo;
+    <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+    &rsaquo;
+    <a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a>
+    &rsaquo;
+    <a href="{% url opts|admin_urlname:'change' object.pk|admin_urlquote %}">{{ object|truncatewords:18 }}</a>
+    &rsaquo; {% trans 'Дерево' %}
 </div>
 {% endblock %}
 
 {% block content %}
 <div id="content-main">
     <ul class="object-tools">
-      <li>
-        <a href="{% url opts|admin_urlname:'change' object.id|admin_urlquote %}">Редактирование</a>
-      </li>
+        <li>
+            <a href="{% url opts|admin_urlname:'change' object.id|admin_urlquote %}">{% trans 'Edit' %}</a>
+        </li>
     </ul>
-  <div id="change-tree" class="change-tree">
-    <div class="tf-tree example">
-        <ul>
-            <li>
-                {% if object.parent_id %}
-                    <span class="tf-nc">
-                        <a href="{% url opts|admin_urlname:'tree' object.parent_id|admin_urlquote %}">Вверх</a>
-                    </span>
-                {% else %}
-                    <span class="tf-nc">
-                        Нет родителя
-                    </span>
-                {% endif %}
-                <ul>
-                    {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=descendants|filter_objects_by_parent:object.pk all_descendants=descendants%}
-                </ul>
-            </li>
-        </ul>
+    <div id="change-tree" class="change-tree">
+        <div class="tf-tree example">
+            <ul>
+                <li>
+                    {% if object.parent_id %}
+                        <span class="tf-nc">
+                            <a href="{% url opts|admin_urlname:'tree' object|get_parent_id:parent_field|admin_urlquote %}">{% trans 'Вверх' %}</a>
+                        </span>
+                    {% else %}
+                        <span class="tf-nc">Нет родителя</span>
+                    {% endif %}
+                    <ul>
+                        {% with parent_field|tuple_filter:object.pk as filter_args %}
+                            {% with descendants|filter_objects_by_parent:filter_args as filtered_descendants %}
+                                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=filtered_descendants all_descendants=descendants %}
+                            {% endwith %}
+                        {% endwith %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}
