@@ -42,6 +42,7 @@ class TreeParentAdminMixin:
 
         if not self.has_view_or_change_permission(request, obj):
             raise PermissionDenied
+        parent_field = model.TreeMeta.parent_field_name
         descendants = obj.get_descendants(max_depth=self.max_tree_depth)
         add_parent_url = '/admin/{}/{}/add/'.format(self.opts.app_label, self.opts.model_name)
         context = {
@@ -49,6 +50,7 @@ class TreeParentAdminMixin:
             "title": _("Tree object: %s") % obj,
             "module_name": str(capfirst(self.opts.verbose_name_plural)),
             "object": obj,
+            'parent_field': parent_field,
             "opts": self.opts,
             'descendants': descendants,
             'add_parent_url': add_parent_url,
