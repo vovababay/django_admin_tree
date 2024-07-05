@@ -32,7 +32,8 @@ class TreeParentAdminMixin:
         ]
 
     def tree_view(self, request, object_id, extra_context=None):
-
+        query_params = request.GET
+        hide=query_params.get('hide')
         model = self.model
         obj = self.get_object(request, unquote(object_id))
         if obj is None:
@@ -44,6 +45,7 @@ class TreeParentAdminMixin:
             raise PermissionDenied
         parent_field = model.TreeMeta.parent_field_name
         descendants = obj.get_descendants(max_depth=self.max_tree_depth)
+
         add_parent_url = '/admin/{}/{}/add/'.format(self.opts.app_label, self.opts.model_name)
         context = {
             **self.admin_site.each_context(request),
@@ -51,6 +53,7 @@ class TreeParentAdminMixin:
             "module_name": str(capfirst(self.opts.verbose_name_plural)),
             "object": obj,
             'parent_field': parent_field,
+            "hide": hide,
             "opts": self.opts,
             'descendants': descendants,
             'add_parent_url': add_parent_url,

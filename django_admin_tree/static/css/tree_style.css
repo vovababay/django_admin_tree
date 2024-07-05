@@ -214,3 +214,9 @@ html[data-theme="dark"] {
 .create-record:hover {
     cursor: pointer;
 }
+
+.hide-tree {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
