@@ -7,16 +7,29 @@
     <div class="tf-nc">
         <a href="{% url opts|admin_urlname:'tree' obj.id|admin_urlquote %}">{{ obj }}</a>
         <button class="create-record" data-id="{{ obj.pk }}" data-url-template="{{ add_parent_url }}" data-parent-field="{{ opts.model.TreeMeta.parent_field_name }}">+</button>
+        <a href="{{ request.path }}?hide={{ obj.id  }}">
+            <img class="hide-tree" alt='hide' width='15px' height='15px' src={% static 'images/hide.png' %} >
+        </a>
     </div>
     {% if descendants %}
         <ul>
-            {% for descendant in descendants %}
-                {% with parent_field|tuple_filter:descendant.pk as filter_args %}
-                    {% with all_descendants|filter_objects_by_parent:filter_args as filtered_descendants %}
-                        {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=filtered_descendants all_descendants=all_descendants add_url=add_url %}
+            {% if not is_hide %}
+                {% for descendant in descendants %}
+                    {% with parent_field|tuple_filter:descendant.pk as filter_args %}
+                        {% with all_descendants|filter_objects_by_parent:filter_args as filtered_descendants %}
+                            {% if descendant.pk|to_string != hide %}
+                                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=filtered_descendants all_descendants=all_descendants add_url=add_url %}
+                            {% else %}
+                                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=descendant descendants=filtered_descendants all_descendants=all_descendants add_url=add_url is_hide=True %}
+                            {% endif %}
+                        {% endwith %}
                     {% endwith %}
-                {% endwith %}
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+            <div class="tf-nc">
+                <a href="{{ request.path }}">...</a>
+            </div>
+            {% endif %}
         </ul>
     {% endif %}
 </li>

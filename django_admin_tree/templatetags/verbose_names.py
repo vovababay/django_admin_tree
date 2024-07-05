@@ -32,3 +32,11 @@ def get_parent_id(obj: Any, parent_field: str) -> Optional[int]:
 def tuple_filter(value, arg):
     return (value, arg)
 
+
+@register.filter
+def get_type(value):
+    return type(value)
+
+@register.filter
+def to_string(value):
+    return str(value)

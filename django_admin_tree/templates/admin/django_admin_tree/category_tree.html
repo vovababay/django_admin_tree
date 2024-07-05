@@ -3,7 +3,7 @@
 
 {% block extrastyle %}
     {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'django_admin_tree/tree_style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tree_style.css' %}" />
 {% endblock %}
 
 {% block extrahead %}
@@ -42,11 +42,27 @@
                         <span class="tf-nc">Нет родителя</span>
                     {% endif %}
                     <ul>
+
+                        {% if not is_hide %}
                         {% with parent_field|tuple_filter:object.pk as filter_args %}
                             {% with descendants|filter_objects_by_parent:filter_args as filtered_descendants %}
-                                {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=filtered_descendants all_descendants=descendants %}
+                                {{ descendant.pk }}
+                                {% if object.pk|to_string != hide %}
+                                    {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=filtered_descendants all_descendants=descendants %}
+                                {% else %}
+                                    {% include 'admin/django_admin_tree/recursive_categories.html' with obj=object descendants=filtered_descendants all_descendants=descendants is_hide=True %}
+                                {% endif %}
                             {% endwith %}
                         {% endwith %}
+                        {% else %}
+                        <div class="tf-nc">
+                            <a href="{{ request.path }}">...</a>
+                        </div>
+                        {% endif %}
+
+
+                      
+                        
                     </ul>
                 </li>
             </ul>
