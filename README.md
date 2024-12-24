@@ -1,8 +1,8 @@
 # django-admin-tree
 
-[PyPi](https://pypi.org/project/django-admin-tree/) 
 
-install 
+Install [PyPi](https://pypi.org/project/django-admin-tree/) lib
+
 ```bash
 pip install django-admin-tree
 ```
