@@ -1,5 +1,13 @@
 # django-admin-tree
 
+[PyPi](https://pypi.org/project/django-admin-tree/) 
+
+install 
+```bash
+pip install django-admin-tree
+```
+
+### settings.py
 ```python
 INSTALLED_APPS = [
     ...
